@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class CotacaoService {
 
-    private final ViaCepClient viaCepClient;
+    private final EnderecoService enderecoService;
 
     private final CotacaoRepository cotacaoRepository;
 
@@ -30,8 +30,8 @@ public class CotacaoService {
     private Long TRES_DIAS = 3L;
     private Long DEZ_DIAS = 10L;
 
-    public CotacaoService(ViaCepClient viaCepClient, CotacaoRepository cotacaoRepository) {
-        this.viaCepClient = viaCepClient;
+    public CotacaoService(EnderecoService enderecoService, CotacaoRepository cotacaoRepository) {
+        this.enderecoService = enderecoService;
         this.cotacaoRepository = cotacaoRepository;
     }
 
@@ -44,8 +44,8 @@ public class CotacaoService {
 
         BigDecimal valorTotalFrete = getValorTotalFrete(cotacaoRequestDTO);
 
-        EnderecoViaCepResponseDTO enderecoOrigem = viaCepClient.getEndereco(cotacaoRequestDTO.getCepOrigem());
-        EnderecoViaCepResponseDTO enderecoDestino = viaCepClient.getEndereco(cotacaoRequestDTO.getCepDestino());
+        EnderecoViaCepResponseDTO enderecoOrigem = enderecoService.getEndereco(cotacaoRequestDTO.getCepOrigem());
+        EnderecoViaCepResponseDTO enderecoDestino = enderecoService.getEndereco(cotacaoRequestDTO.getCepDestino());
 
         if (enderecoOrigem.getUf().equals(enderecoDestino.getUf())
                 && enderecoOrigem.getDdd().equals(enderecoDestino.getDdd())) {
