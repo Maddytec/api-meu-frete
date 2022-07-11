@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com</groupId>
-	<artifactId>sigabem</artifactId>
+	<artifactId>meu-frete</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Siga Bem</name>
-	<description>Projeto Siga Bem</description>
+	<name>api-meu-frete</name>
+	<description>Api Spring Boot para calcular frete pelo peso, cep de origem e destino</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.3</spring-cloud.version>
